@@ -25,4 +25,4 @@ i wanted to try : **WebSocket** + **Material3** + **Compose**
 
 | screen record |
 | - |
-| ![](https://raw.githubusercontent.com/andybeardness/WebSocket-Android/release/preview/rec.gif) |
+| <img src="https://raw.githubusercontent.com/andybeardness/WebSocket-Android/release/preview/rec.gif" width="250"> |
