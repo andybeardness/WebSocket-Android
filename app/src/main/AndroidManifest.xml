@@ -15,11 +15,14 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.WebSocketsTest"
+        android:configChanges="uiMode"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
             android:name=".MainActivity"
             android:exported="true"
+            android:configChanges="uiMode"
+            android:screenOrientation="fullSensor"
             android:theme="@style/Theme.WebSocketsTest">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

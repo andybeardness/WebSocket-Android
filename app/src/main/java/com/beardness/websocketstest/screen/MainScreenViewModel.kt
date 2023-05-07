@@ -133,12 +133,6 @@ class MainScreenViewModel(
         }
     }
 
-    fun silentDisconnect() {
-        scope.launch {
-            websocket?.close(code = 1000, "Closed manually")
-        }
-    }
-
     fun message(text: String) {
         scope.launch {
             text.ifNotBlank { currentText ->
@@ -157,6 +151,11 @@ class MainScreenViewModel(
                 )
             }
         }
+    }
+
+    fun stop() {
+        websocket?.close(code = 1000, "Closed manually")
+        websocket = null
     }
 
     private suspend fun <T> MutableStateFlow<List<T>>.appendEmit(element: T) {
