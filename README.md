@@ -26,3 +26,7 @@ i wanted to try : **WebSocket** + **Material3** + **Compose**
 | screen record |
 | - |
 | <img src="https://raw.githubusercontent.com/andybeardness/WebSocket-Android/release/preview/rec.gif" width="250"> |
+
+| english | русский |
+| - | - |
+| ![](https://raw.githubusercontent.com/andybeardness/WebSocket-Android/release/preview/l-en.jpg) | ![](https://raw.githubusercontent.com/andybeardness/WebSocket-Android/release/preview/l-ru.jpg) |
