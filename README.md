@@ -44,5 +44,5 @@ i wanted to try : **WebSocket** + **Material3** + **Compose** + **Dynamic colors
 ## default themes : light + dark
 |   |   |
 | - | - |
-| ![](https://raw.githubusercontent.com/andybeardness/WebSocket-Android/release/preview/dt-l-f.png) | ![](https://raw.githubusercontent.com/andybeardness/WebSocket-Android/release/preview/dt-l-s.png) |
-| ![](https://raw.githubusercontent.com/andybeardness/WebSocket-Android/release/preview/dt-d-f.png) | ![](https://raw.githubusercontent.com/andybeardness/WebSocket-Android/release/preview/dt-d-s.png) |
+| ![](https://raw.githubusercontent.com/andybeardness/WebSocket-Android/release/preview/dt-l-f.png) | ![](https://raw.githubusercontent.com/andybeardness/WebSocket-Android/release/preview/dt-d-f.png) |
+| ![](https://raw.githubusercontent.com/andybeardness/WebSocket-Android/release/preview/dt-l-s.png) | ![](https://raw.githubusercontent.com/andybeardness/WebSocket-Android/release/preview/dt-d-s.png) |
