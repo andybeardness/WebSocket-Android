@@ -14,6 +14,10 @@ i wanted to try : **WebSocket** + **Material3** + **Compose**
 
 # preview
 
+| screen record |
+| - |
+| <img src="https://raw.githubusercontent.com/andybeardness/WebSocket-Android/release/preview/rec.gif" width="300"> |
+
 | background  | light theme | dark theme |
 | - | - | - |
 | ![](https://raw.githubusercontent.com/andybeardness/WebSocket-Android/release/preview/bg-r.jpg)  | ![](https://raw.githubusercontent.com/andybeardness/WebSocket-Android/release/preview/ss-r-l.jpg)  | ![](https://raw.githubusercontent.com/andybeardness/WebSocket-Android/release/preview/ss-r-d.jpg)  |
@@ -24,10 +28,6 @@ i wanted to try : **WebSocket** + **Material3** + **Compose**
 | no internet | error |
 | - | - |
 | ![](https://raw.githubusercontent.com/andybeardness/WebSocket-Android/release/preview/ss-net.jpg) | ![](https://raw.githubusercontent.com/andybeardness/WebSocket-Android/release/preview/ss-err.jpg) |
-
-| screen record |
-| - |
-| <img src="https://raw.githubusercontent.com/andybeardness/WebSocket-Android/release/preview/rec.gif" width="250"> |
 
 | english | русский |
 | - | - |
