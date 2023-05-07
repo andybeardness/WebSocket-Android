@@ -10,17 +10,23 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.beardness.websocketstest.R
 
 @Composable
 fun StatusWidget(
     internet: Boolean,
     status: Boolean,
 ) {
+    val connectedText = stringResource(id = R.string.connected)
+    val disconnectedText = stringResource(id = R.string.disconnected)
+    val noInternetText = stringResource(id = R.string.no_internet)
+
     val statusText = when {
-        internet && status -> "Connected"
-        internet -> "Disconnected"
-        else -> "No internet"
+        internet && status -> connectedText
+        internet -> disconnectedText
+        else -> noInternetText
     }
 
     val enableColor = MaterialTheme.colorScheme.primary

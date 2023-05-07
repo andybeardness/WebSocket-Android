@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="connect">Подключиться</string>
+    <string name="connected">Подключено</string>
+    <string name="disconnect">Отключить</string>
+    <string name="disconnected">Отключенно</string>
+    <string name="no_internet">Нет интернета</string>
+    <string name="no_connect">Нет соединения</string>
+    <string name="you">● Вы</string>
+    <string name="server">● Сервер</string>
+    <string name="enter_message">Введите сообщение</string>
+    <string name="send">Жмак</string>
+</resources>

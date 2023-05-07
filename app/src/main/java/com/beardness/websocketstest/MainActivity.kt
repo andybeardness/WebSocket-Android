@@ -1,6 +1,5 @@
 package com.beardness.websocketstest
 
-import android.content.Context
 import android.net.ConnectivityManager
 import android.net.Network
 import android.os.Bundle
@@ -12,11 +11,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
+import com.beardness.websocketstest.domain.helper.ifNotBlank
 import com.beardness.websocketstest.screen.MainScreen
 import com.beardness.websocketstest.screen.MainScreenViewModel
 import com.beardness.websocketstest.ui.theme.WebSocketsTestTheme
@@ -37,6 +35,8 @@ class MainActivity : ComponentActivity() {
 
     private var connectionManager: ConnectivityManager? = null
     private var vibrator: Vibrator? = null
+
+    private val dataStore by preferencesDataStore(name = DATA_STORE_NAME)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,16 +61,16 @@ class MainActivity : ComponentActivity() {
     private fun setupUrl() {
         scope.launch {
             val urlFromDataStore =
-                wsDataStore
+                dataStore
                     .data
                     .map { preferences ->
                         val urlKey = stringPreferencesKey(name = DATA_STORE_STRING_KEY_URL)
-                        preferences[urlKey] ?: ""
+                        return@map preferences[urlKey] ?: ""
                     }
                     .firstOrNull()
                     ?: return@launch
 
-           viewModel.url(update = urlFromDataStore)
+           viewModel.restoreUrl(restored = urlFromDataStore)
         }
     }
 
@@ -92,15 +92,13 @@ class MainActivity : ComponentActivity() {
 
     private fun listenUrl() {
         scope.launch {
-            viewModel.url.collect { url ->
-                if (url.isEmpty()) {
-                    return@collect
-                }
+            viewModel.currentUrl.collect { currentUrl ->
+                currentUrl.ifNotBlank { url ->
+                    val urlKey = stringPreferencesKey(name = DATA_STORE_STRING_KEY_URL)
 
-                val urlKey = stringPreferencesKey(name = DATA_STORE_STRING_KEY_URL)
-
-                wsDataStore.edit { mutablePreferences ->
-                    mutablePreferences[urlKey] = url
+                    dataStore.edit { mutablePreferences ->
+                        mutablePreferences[urlKey] = url
+                    }
                 }
             }
         }
@@ -139,6 +137,4 @@ class MainActivity : ComponentActivity() {
     private fun haptic() {
         vibrator?.vibrate(50)
     }
-
-    private val Context.wsDataStore: DataStore<Preferences> by preferencesDataStore(name = DATA_STORE_NAME)
 }

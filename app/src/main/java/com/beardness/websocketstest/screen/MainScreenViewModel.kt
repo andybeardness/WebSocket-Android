@@ -4,6 +4,7 @@ import com.beardness.websocketstest.domain.OkHttpWsClient
 import com.beardness.websocketstest.domain.dto.FailureDto
 import com.beardness.websocketstest.domain.dto.MessageDto
 import com.beardness.websocketstest.domain.helper.Timer
+import com.beardness.websocketstest.domain.helper.ifNotBlank
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -20,10 +21,7 @@ class MainScreenViewModel(
     private val _internet = MutableStateFlow<Boolean>(value = false)
     val internet = _internet.asStateFlow()
 
-    private val _url = MutableStateFlow<String>(value = "")
-    val url = _url.asStateFlow()
-
-    private val _open = MutableStateFlow<Boolean>(value = false)
+    private val _open = MutableStateFlow<Boolean>(value = true)
     val toolbarOpen = _open.asStateFlow()
 
     private val _status = MutableStateFlow<Boolean>(value = false)
@@ -35,15 +33,22 @@ class MainScreenViewModel(
     private val _loading = MutableStateFlow<Boolean>(value = false)
     val loading = _loading.asStateFlow()
 
-    private val _input = MutableStateFlow<String>(value = "")
-    val input = _input.asStateFlow()
-
     private val _failure = MutableStateFlow<FailureDto?>(value = null)
     val failure = _failure.asStateFlow()
+
+    private val _restoreUrlEvent = MutableStateFlow<String>(value = "")
+    val restoreUrlEvent = _restoreUrlEvent.asStateFlow()
+
+    private val _currentUrl = MutableStateFlow<String>(value = "")
+    val currentUrl = _currentUrl.asStateFlow()
 
     private val setStatus: (status: Boolean) -> Unit = { status ->
         scope.launch {
             _status.emit(value = status)
+
+            if (status) {
+                _open.emit(value = false)
+            }
         }
     }
 
@@ -90,6 +95,18 @@ class MainScreenViewModel(
         }
     }
 
+    fun restoreUrl(restored: String) {
+        scope.launch {
+            _restoreUrlEvent.emit(value = restored)
+        }
+    }
+
+    fun updateUrl(updated: String) {
+        scope.launch {
+            _currentUrl.emit(value = updated)
+        }
+    }
+
     fun toolbarSwitch() {
         scope.launch {
             val new = _open.value.not()
@@ -97,12 +114,11 @@ class MainScreenViewModel(
         }
     }
 
-    fun connect() {
+    fun connect(url: String) {
         scope.launch {
             try {
                 _loading.emit(value = true)
-                websocket = okHttpWsClient.websocket(url = _url.value)
-                _open.emit(value = false)
+                websocket = okHttpWsClient.websocket(url = url)
             } catch (t: Throwable) {
                 _failure.emit(value = FailureDto(message = t.message.orEmpty()))
                 _loading.emit(value = false)
@@ -125,37 +141,21 @@ class MainScreenViewModel(
 
     fun message(text: String) {
         scope.launch {
-            if (text.isEmpty()) {
-                return@launch
-            }
+            text.ifNotBlank { currentText ->
+                _loading.emit(value = true)
 
-            _loading.emit(value = true)
+                val trimmed = currentText.trim()
 
-            val trimmed = text.trim()
+                websocket?.send(text = trimmed)
 
-            websocket?.send(text = trimmed)
-
-            _message.appendEmit(
-                element = MessageDto(
-                    status = true,
-                    text = trimmed,
-                    datetime = timer.now(),
+                _message.appendEmit(
+                    element = MessageDto(
+                        status = true,
+                        text = trimmed,
+                        datetime = timer.now(),
+                    )
                 )
-            )
-
-            _input.emit(value = "")
-        }
-    }
-
-    fun url(update: String) {
-        scope.launch {
-            _url.emit(value = update)
-        }
-    }
-
-    fun input(update: String) {
-        scope.launch {
-            _input.emit(value = update)
+            }
         }
     }
 

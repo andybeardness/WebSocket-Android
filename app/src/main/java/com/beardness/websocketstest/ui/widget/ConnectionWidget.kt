@@ -18,8 +18,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.beardness.websocketstest.ui.widget.component.SpacerHorizontalComponent
+import com.beardness.websocketstest.R
 
 @Composable
 fun ConnectionWidget(
@@ -29,6 +31,9 @@ fun ConnectionWidget(
     disconnectButtonAction: () -> Unit,
 
 ) {
+    val connectText = stringResource(id = R.string.connect)
+    val disconnectText = stringResource(id = R.string.disconnect)
+
     val buttonShape = RoundedCornerShape(percent = 50)
 
     val enableColor = MaterialTheme.colorScheme.primary
@@ -93,7 +98,7 @@ fun ConnectionWidget(
         ) {
             Row {
                 Text(
-                    text = "Connect",
+                    text = connectText,
                     color = connectButtonColor,
                 )
 
@@ -124,7 +129,7 @@ fun ConnectionWidget(
         ) {
             Row {
                 Text(
-                    text = "Disconnect",
+                    text = disconnectText,
                     color = disconnectButtonColor,
                 )
 

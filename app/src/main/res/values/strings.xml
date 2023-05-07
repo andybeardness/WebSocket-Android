@@ -1,3 +1,18 @@
 <resources>
-    <string name="app_name">WebSocket</string>
+    <string name="app_name" translatable="false">WebSocket</string>
+
+    <string name="close_msg" translatable="false">Closed manually</string>
+
+    <string name="wss_placeholder_msg" translatable="false">wss://…</string>
+
+    <string name="connect">Connect</string>
+    <string name="connected">Connected</string>
+    <string name="disconnect">Disconnect</string>
+    <string name="disconnected">Disconnected</string>
+    <string name="no_internet">No internet</string>
+    <string name="no_connect">No connect</string>
+    <string name="you">● You</string>
+    <string name="server">● Server</string>
+    <string name="send">Send</string>
+    <string name="enter_message">Enter message</string>
 </resources>

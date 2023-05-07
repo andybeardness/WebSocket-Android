@@ -2,13 +2,13 @@ package com.beardness.websocketstest.screen
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalFocusManager
 import com.beardness.websocketstest.ui.widget.*
 import com.beardness.websocketstest.ui.widget.component.SpacerVerticalComponent
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 @Composable
 fun MainScreen(
@@ -17,19 +17,33 @@ fun MainScreen(
     val focusManager = LocalFocusManager.current
 
     val internet by viewModel.internet.collectAsState(initial = false)
-    val url by viewModel.url.collectAsState(initial = "")
     val open by viewModel.toolbarOpen.collectAsState(initial = false)
     val status by viewModel.status.collectAsState(initial = false)
     val loading by viewModel.loading.collectAsState(initial = false)
     val message by viewModel.message.collectAsState(initial = emptyList())
-    val input by viewModel.input.collectAsState(initial = "")
+
+    var url by remember { mutableStateOf("") }
+    var input by remember { mutableStateOf("") }
+
+    val onUrlChanged: (new: String) -> Unit = { new ->
+        url = new
+        viewModel.updateUrl(updated = new)
+    }
+    
+    LaunchedEffect(key1 = Unit) {
+        launch {
+            viewModel.restoreUrlEvent.collectLatest { restored ->
+                url = restored
+            }
+        }
+    }
 
     val connectButtonAction: () -> Unit = when {
         internet && status -> {
             { /* Do nothing */ }
         }
         internet -> {
-            { viewModel.connect() }
+            { viewModel.connect(url = url) }
         }
         else -> {
             { /* Do nothing */ }
@@ -59,7 +73,7 @@ fun MainScreen(
         ToolbarWidget(
             internet = internet,
             url = url,
-            onUrlChanged = { new -> viewModel.url(update = new) },
+            onUrlChanged = onUrlChanged,
             open = open,
             onClickOpen = { viewModel.toolbarSwitch() }
         )
@@ -98,7 +112,7 @@ fun MainScreen(
             internet = internet,
             status = status,
             input = input,
-            onInputChanged = { new -> viewModel.input(update = new) },
+            onInputChanged = { new -> input = new },
             onClickSend = sendAction,
         )
 

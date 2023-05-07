@@ -17,7 +17,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.beardness.websocketstest.R
 
 @Composable
 fun SendButtonComponent(
@@ -25,6 +27,8 @@ fun SendButtonComponent(
     status: Boolean,
     action: () -> Unit,
 ) {
+    val sendText = stringResource(id = R.string.send)
+
     val buttonShape = RoundedCornerShape(percent = 50)
 
     val enableColor = MaterialTheme.colorScheme.primary
@@ -64,7 +68,7 @@ fun SendButtonComponent(
     ) {
         Row {
             Text(
-                text = "Send",
+                text = sendText,
                 color = sendButtonColor,
             )
 
