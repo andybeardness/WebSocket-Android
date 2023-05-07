@@ -33,7 +33,7 @@ i wanted to try : **WebSocket** + **Material3** + **Compose**
 | - | - |
 | ![](https://raw.githubusercontent.com/andybeardness/WebSocket-Android/release/preview/l-en.jpg) | ![](https://raw.githubusercontent.com/andybeardness/WebSocket-Android/release/preview/l-ru.jpg) |
 
-| x | start | used |
+| | start | used |
 | - | - | - |
 | default theme light | ![](https://raw.githubusercontent.com/andybeardness/WebSocket-Android/release/preview/dt-l-f.png) | ![](https://raw.githubusercontent.com/andybeardness/WebSocket-Android/release/preview/dt-l-s.png) |
 | default theme dark | ![](https://raw.githubusercontent.com/andybeardness/WebSocket-Android/release/preview/dt-d-f.png) | ![](https://raw.githubusercontent.com/andybeardness/WebSocket-Android/release/preview/dt-d-s.png) |
