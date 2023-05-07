@@ -1,21 +1,28 @@
 # websocket-android
 
-Android app : WebSocket
+android app : WebSocket
 
-# Motivation
+# about
 
-I wanted to try : WebSocket + Material3 + Compose
+application for sandboxing websocket requests
 
-# Preview
+# motivation
 
-| Background  | Light Theme | Dark Theme |
+i wanted to try : **WebSocket** + **Material3** + **Compose**
+
+# preview
+
+| background  | light theme | dark theme |
 | - | - | - |
 | ![](https://raw.githubusercontent.com/andybeardness/WebSocket-Android/release/preview/bg-r.jpg)  | ![](https://raw.githubusercontent.com/andybeardness/WebSocket-Android/release/preview/ss-r-l.jpg)  | ![](https://raw.githubusercontent.com/andybeardness/WebSocket-Android/release/preview/ss-r-d.jpg)  |
 | ![](https://raw.githubusercontent.com/andybeardness/WebSocket-Android/release/preview/bg-y.jpg)  | ![](https://raw.githubusercontent.com/andybeardness/WebSocket-Android/release/preview/ss-y-l.jpg)  | ![](https://raw.githubusercontent.com/andybeardness/WebSocket-Android/release/preview/ss-y-d.jpg)  |
 | ![](https://raw.githubusercontent.com/andybeardness/WebSocket-Android/release/preview/bg-g.jpg)  | ![](https://raw.githubusercontent.com/andybeardness/WebSocket-Android/release/preview/ss-g-l.jpg)  | ![](https://raw.githubusercontent.com/andybeardness/WebSocket-Android/release/preview/ss-g-d.jpg)  |
 | ![](https://raw.githubusercontent.com/andybeardness/WebSocket-Android/release/preview/bg-p.jpg)  | ![](https://raw.githubusercontent.com/andybeardness/WebSocket-Android/release/preview/ss-p-l.jpg)  | ![](https://raw.githubusercontent.com/andybeardness/WebSocket-Android/release/preview/ss-p-d.jpg)  |
 
-| No internet | Error |
+| no internet | error |
 | - | - |
 | ![](https://raw.githubusercontent.com/andybeardness/WebSocket-Android/release/preview/ss-net.jpg) | ![](https://raw.githubusercontent.com/andybeardness/WebSocket-Android/release/preview/ss-err.jpg) |
 
+| screen record |
+| - |
+| ![](https://raw.githubusercontent.com/andybeardness/WebSocket-Android/release/preview/rec.gif) |
