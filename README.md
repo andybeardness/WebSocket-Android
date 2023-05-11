@@ -1,39 +1,32 @@
-# websocket-android
+# WebSocket
 
 <img src="https://github.com/andybeardness/WebSocket-Android/blob/release/app/src/main/1024.png?raw=true" width="250">
 
 android app : WebSocket
 
-# about
+# About
 
-application for sandboxing websocket requests
+Application for sandboxing websocket requests
 
-# motivation
+Designed with Neumorphism
 
-i wanted to try : **WebSocket** + **Material3** + **Compose** + **Dynamic colors**
+# Features
 
-# preview
+- **Connect/Disconnect WS**
+- **Send message to WS**
 
-## screen record
+# Dev Features
 
-|   |
-| - |
-| <img src="https://raw.githubusercontent.com/andybeardness/WebSocket-Android/release/preview/rec.gif" width="300"> |
+- **WebSocket**
+- **Neumorphism**
 
-## dynamic colors
+# Preview
 
-|   |   |   |
-| - | - | - |
-| ![](https://raw.githubusercontent.com/andybeardness/WebSocket-Android/release/preview/bg-r.jpg)  | ![](https://raw.githubusercontent.com/andybeardness/WebSocket-Android/release/preview/ss-r-l.jpg)  | ![](https://raw.githubusercontent.com/andybeardness/WebSocket-Android/release/preview/ss-r-d.jpg)  |
-| ![](https://raw.githubusercontent.com/andybeardness/WebSocket-Android/release/preview/bg-y.jpg)  | ![](https://raw.githubusercontent.com/andybeardness/WebSocket-Android/release/preview/ss-y-l.jpg)  | ![](https://raw.githubusercontent.com/andybeardness/WebSocket-Android/release/preview/ss-y-d.jpg)  |
-| ![](https://raw.githubusercontent.com/andybeardness/WebSocket-Android/release/preview/bg-g.jpg)  | ![](https://raw.githubusercontent.com/andybeardness/WebSocket-Android/release/preview/ss-g-l.jpg)  | ![](https://raw.githubusercontent.com/andybeardness/WebSocket-Android/release/preview/ss-g-d.jpg)  |
-| ![](https://raw.githubusercontent.com/andybeardness/WebSocket-Android/release/preview/bg-p.jpg)  | ![](https://raw.githubusercontent.com/andybeardness/WebSocket-Android/release/preview/ss-p-l.jpg)  | ![](https://raw.githubusercontent.com/andybeardness/WebSocket-Android/release/preview/ss-p-d.jpg)  |
-
-## states : no internet + error message
+## Themes
 
 |   |   |
 | - | - |
-| ![](https://raw.githubusercontent.com/andybeardness/WebSocket-Android/release/preview/ss-net.jpg) | ![](https://raw.githubusercontent.com/andybeardness/WebSocket-Android/release/preview/ss-err.jpg) |
+| ![](/preview/il.png) | ![](/preview/id.png) |
 
 ## locales : en + ru
 
@@ -46,3 +39,9 @@ i wanted to try : **WebSocket** + **Material3** + **Compose** + **Dynamic colors
 | - | - |
 | ![](https://raw.githubusercontent.com/andybeardness/WebSocket-Android/release/preview/dt-l-f.png) | ![](https://raw.githubusercontent.com/andybeardness/WebSocket-Android/release/preview/dt-d-f.png) |
 | ![](https://raw.githubusercontent.com/andybeardness/WebSocket-Android/release/preview/dt-l-s.png) | ![](https://raw.githubusercontent.com/andybeardness/WebSocket-Android/release/preview/dt-d-s.png) |
+
+## Screen record
+
+|   |   |
+| - | - |
+| ![](/preview/rl.gif) | ![](/preview/rd.gif) |
