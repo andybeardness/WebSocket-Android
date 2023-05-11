@@ -12,8 +12,11 @@ Designed with Neumorphism
 
 # Features
 
-- **Connect/Disconnect WS**
-- **Send message to WS**
+- **Kotlin**
+- **Kotlin Coroutines**
+- **Connect/Disconnect WebSocket**
+- **Send message to WebSocket**
+- **DataStore**
 
 # Dev Features
 
