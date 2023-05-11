@@ -27,6 +27,7 @@ Designed with Neumorphism
 |   |   |
 | - | - |
 | ![](/preview/il.png) | ![](/preview/id.png) |
+| ![](/preview/cl.png) | ![](/preview/cd.png) |
 
 ## locales : en + ru
 
