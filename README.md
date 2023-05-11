@@ -29,18 +29,6 @@ Designed with Neumorphism
 | ![](/preview/il.png) | ![](/preview/id.png) |
 | ![](/preview/cl.png) | ![](/preview/cd.png) |
 
-## locales : en + ru
-
-|   |   |
-| - | - |
-| ![](https://raw.githubusercontent.com/andybeardness/WebSocket-Android/release/preview/l-en.jpg) | ![](https://raw.githubusercontent.com/andybeardness/WebSocket-Android/release/preview/l-ru.jpg) |
-
-## default themes : light + dark
-|   |   |
-| - | - |
-| ![](https://raw.githubusercontent.com/andybeardness/WebSocket-Android/release/preview/dt-l-f.png) | ![](https://raw.githubusercontent.com/andybeardness/WebSocket-Android/release/preview/dt-d-f.png) |
-| ![](https://raw.githubusercontent.com/andybeardness/WebSocket-Android/release/preview/dt-l-s.png) | ![](https://raw.githubusercontent.com/andybeardness/WebSocket-Android/release/preview/dt-d-s.png) |
-
 ## Screen record
 
 |   |   |
