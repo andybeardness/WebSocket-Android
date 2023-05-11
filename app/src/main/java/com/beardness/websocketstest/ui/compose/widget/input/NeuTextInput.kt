@@ -88,7 +88,7 @@ fun NeuTextInput(
             placeholder = {
                 Text(
                     text = placeholderText,
-                    fontWeight = FontWeight.Thin,
+                    fontWeight = FontWeight.Light,
                     color = placeholderTextColor,
                 )
             },
