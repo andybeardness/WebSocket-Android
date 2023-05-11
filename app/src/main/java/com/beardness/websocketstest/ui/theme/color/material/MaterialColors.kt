@@ -1,4 +1,4 @@
-package com.beardness.websocketstest.ui.theme.color
+package com.beardness.websocketstest.ui.theme.color.material
 
 import androidx.compose.ui.graphics.Color
 

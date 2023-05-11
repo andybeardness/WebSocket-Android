@@ -1,6 +1,5 @@
-package com.beardness.websocketstest.ui.widget.component
+package com.beardness.websocketstest.ui.compose.component.logo
 
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -9,12 +8,13 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.sp
+import com.beardness.websocketstest.ui.theme.AppTheme
 
 @Composable
-fun LogoComponent(
+fun NeuLogoComponent(
     modifier: Modifier,
 ) {
-    val toolbarColor = MaterialTheme.colorScheme.onBackground
+    val toolbarColor = AppTheme.colors.text
     val toolbarColorAlpha = toolbarColor.copy(alpha = .75f)
 
     Text(

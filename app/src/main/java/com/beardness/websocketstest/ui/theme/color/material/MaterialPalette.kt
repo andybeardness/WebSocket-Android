@@ -1,8 +1,8 @@
-package com.beardness.websocketstest.ui.theme.color
+package com.beardness.websocketstest.ui.theme.color.material
 
 import androidx.compose.material3.ColorScheme
 
-object Palette {
+object MaterialPalette {
     val DarkColorScheme = ColorScheme(
         primary = md_theme_dark_primary,
         onPrimary = md_theme_dark_onPrimary,

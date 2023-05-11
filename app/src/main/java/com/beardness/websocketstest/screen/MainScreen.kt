@@ -2,22 +2,29 @@ package com.beardness.websocketstest.screen
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalFocusManager
-import com.beardness.websocketstest.ui.widget.*
-import com.beardness.websocketstest.ui.widget.component.SpacerVerticalComponent
+import androidx.compose.ui.unit.dp
+import com.beardness.websocketstest.ui.compose.component.spacer.NeuSpacerColumn
+import com.beardness.websocketstest.ui.compose.widget.connection.NeuConnectionWidget
+import com.beardness.websocketstest.ui.compose.widget.loading.NeuLoadingWidget
+import com.beardness.websocketstest.ui.compose.widget.message.NeuMessagesWidget
+import com.beardness.websocketstest.ui.compose.widget.send.NeuSendWidget
+import com.beardness.websocketstest.ui.compose.widget.status.NeuStatusWidget
+import com.beardness.websocketstest.ui.compose.widget.toolbar.NeuToolbarWidget
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @Composable
 fun MainScreen(
     viewModel: MainScreenViewModel,
+    haptic: () -> Unit,
 ) {
     val focusManager = LocalFocusManager.current
 
     val internet by viewModel.internet.collectAsState(initial = false)
-    val open by viewModel.toolbarOpen.collectAsState(initial = false)
     val status by viewModel.status.collectAsState(initial = false)
     val loading by viewModel.loading.collectAsState(initial = false)
     val message by viewModel.message.collectAsState(initial = emptyList())
@@ -38,84 +45,74 @@ fun MainScreen(
         }
     }
 
-    val connectButtonAction: () -> Unit = when {
-        internet && status -> {
-            { /* Do nothing */ }
-        }
-        internet -> {
-            { viewModel.connect(url = url) }
-        }
-        else -> {
-            { /* Do nothing */ }
+    val connectButtonAction: () -> Unit = {
+        haptic()
+        if (internet) {
+            viewModel.connect(url = url)
         }
     }
 
-    val disconnectButtonAction: () -> Unit = when {
-        internet && status -> {
-            { viewModel.disconnect() }
-        }
-        internet -> {
-            { /* Do nothing */ }
-        }
-        else -> {
-            { /* Do nothing */ }
+    val disconnectButtonAction: () -> Unit = {
+        haptic()
+        if (internet && status) {
+            viewModel.disconnect()
         }
     }
 
     val sendAction: () -> Unit = {
+        haptic()
         viewModel.message(text = input)
         focusManager.clearFocus()
     }
 
     Column(
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(horizontal = 16.dp)
     ) {
-        ToolbarWidget(
+        NeuToolbarWidget(
             internet = internet,
             url = url,
             onUrlChanged = onUrlChanged,
-            open = open,
-            onClickOpen = { viewModel.toolbarSwitch() }
         )
 
-        SpacerVerticalComponent()
+        NeuSpacerColumn(size = 8.dp)
 
-        ConnectionWidget(
+        NeuConnectionWidget(
             internet = internet,
             status = status,
             connectButtonAction = connectButtonAction,
             disconnectButtonAction = disconnectButtonAction,
         )
 
-        SpacerVerticalComponent()
+        NeuSpacerColumn(size = 8.dp)
 
-        StatusWidget(
+        NeuStatusWidget(
             internet = internet,
             status = status,
         )
 
-        SpacerVerticalComponent()
+        NeuSpacerColumn(size = 8.dp)
 
-        LoadingWidget(
+        NeuLoadingWidget(
             loading = loading,
         )
 
-        MessagesWidget(
+        NeuMessagesWidget(
             modifier = Modifier.weight(weight = 1f),
             message = message,
         )
 
-        SpacerVerticalComponent()
+        NeuSpacerColumn(size = 8.dp)
 
-        SendWidget(
-            modifier = Modifier.weight(weight = 1f),
+        NeuSendWidget(
             internet = internet,
             status = status,
             input = input,
-            onInputChanged = { new -> input = new },
+            onInputChange = { new -> input = new },
             onClickSend = sendAction,
         )
 
-        SpacerVerticalComponent()
+        NeuSpacerColumn(size = 16.dp)
     }
 }

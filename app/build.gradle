@@ -81,4 +81,7 @@ dependencies {
 
     // DATA-STORE
     implementation "androidx.datastore:datastore-preferences:1.0.0"
+
+    // NEUMORPHIC
+    implementation 'io.github.sridhar-sp:neumorphic:0.0.6'
 }

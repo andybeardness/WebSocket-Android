@@ -1,21 +1,19 @@
-package com.beardness.websocketstest.ui.widget
+package com.beardness.websocketstest.ui.compose.widget.status
 
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
 import com.beardness.websocketstest.R
+import com.beardness.websocketstest.ui.theme.AppTheme
 
 @Composable
-fun StatusWidget(
+fun NeuStatusWidget(
     internet: Boolean,
     status: Boolean,
 ) {
@@ -29,8 +27,8 @@ fun StatusWidget(
         else -> noInternetText
     }
 
-    val enableColor = MaterialTheme.colorScheme.primary
-    val disableColor = MaterialTheme.colorScheme.onBackground.copy(alpha = .3f)
+    val enableColor = AppTheme.colors.text
+    val disableColor = AppTheme.colors.text.copy(alpha = .3f)
 
     val statusConnectedColor = enableColor.copy(alpha = .3f)
     val statusDisconnectedColor = disableColor.copy(alpha = .3f)
@@ -48,8 +46,7 @@ fun StatusWidget(
 
     Text(
         modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 16.dp),
+            .fillMaxWidth(),
         text = statusText,
         color = statusColor,
     )

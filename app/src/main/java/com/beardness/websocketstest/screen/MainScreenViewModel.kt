@@ -15,14 +15,10 @@ import okhttp3.WebSocket
 class MainScreenViewModel(
     private val timer: Timer = Timer()
 ) {
-
     private val scope = CoroutineScope(context = Dispatchers.IO)
 
     private val _internet = MutableStateFlow<Boolean>(value = false)
     val internet = _internet.asStateFlow()
-
-    private val _open = MutableStateFlow<Boolean>(value = true)
-    val toolbarOpen = _open.asStateFlow()
 
     private val _status = MutableStateFlow<Boolean>(value = false)
     val status = _status.asStateFlow()
@@ -45,10 +41,6 @@ class MainScreenViewModel(
     private val setStatus: (status: Boolean) -> Unit = { status ->
         scope.launch {
             _status.emit(value = status)
-
-            if (status) {
-                _open.emit(value = false)
-            }
         }
     }
 
@@ -107,13 +99,6 @@ class MainScreenViewModel(
         }
     }
 
-    fun toolbarSwitch() {
-        scope.launch {
-            val new = _open.value.not()
-            _open.emit(value = new)
-        }
-    }
-
     fun connect(url: String) {
         scope.launch {
             try {
@@ -159,6 +144,6 @@ class MainScreenViewModel(
     }
 
     private suspend fun <T> MutableStateFlow<List<T>>.appendEmit(element: T) {
-        this.emit(value = this.value.toMutableList().apply { add(element = element) })
+        this.emit(value = this.value.toMutableList().apply { add(index = 0, element = element) })
     }
 }

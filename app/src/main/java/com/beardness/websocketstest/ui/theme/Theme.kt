@@ -6,12 +6,17 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.platform.LocalContext
-import com.beardness.websocketstest.ui.theme.color.Palette
+import com.beardness.websocketstest.ui.theme.color.AppColors
+import com.beardness.websocketstest.ui.theme.color.LocalAppColors
+import com.beardness.websocketstest.ui.theme.color.appColorsDark
+import com.beardness.websocketstest.ui.theme.color.material.MaterialPalette
+import com.beardness.websocketstest.ui.theme.color.appColorsLight
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 @Composable
-fun WebSocketsTestTheme(
+fun AppTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {
@@ -23,18 +28,33 @@ fun WebSocketsTestTheme(
         when {
             dynamicColor && darkTheme -> dynamicDarkColorScheme(context = localContext)
             dynamicColor && !darkTheme -> dynamicLightColorScheme(context = localContext)
-            !darkTheme -> Palette.LightColorScheme
-            else -> Palette.DarkColorScheme
+            !darkTheme -> MaterialPalette.LightColorScheme
+            else -> MaterialPalette.DarkColorScheme
+        }
+
+    val appColors =
+        if (darkTheme) {
+            appColorsDark
+        } else {
+            appColorsLight
         }
 
     val systemUiController = rememberSystemUiController()
     systemUiController.apply {
-        setStatusBarColor(color = colorScheme.background)
-        setNavigationBarColor(color = colorScheme.background)
+        setStatusBarColor(color = appColors.background)
+        setNavigationBarColor(color = appColors.background)
     }
 
-    MaterialTheme(
-        colorScheme = colorScheme,
-        content = content,
-    )
+    CompositionLocalProvider(LocalAppColors provides appColors) {
+        MaterialTheme(
+            colorScheme = colorScheme,
+            content = content,
+        )
+    }
+}
+
+object AppTheme {
+    val colors: AppColors
+        @Composable
+        get() = LocalAppColors.current
 }

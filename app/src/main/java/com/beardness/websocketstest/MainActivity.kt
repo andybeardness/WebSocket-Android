@@ -2,13 +2,14 @@ package com.beardness.websocketstest
 
 import android.net.ConnectivityManager
 import android.net.Network
+import android.os.Build
 import android.os.Bundle
+import android.os.VibrationEffect
 import android.os.Vibrator
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.datastore.preferences.core.edit
@@ -17,7 +18,7 @@ import androidx.datastore.preferences.preferencesDataStore
 import com.beardness.websocketstest.domain.helper.ifNotBlank
 import com.beardness.websocketstest.screen.MainScreen
 import com.beardness.websocketstest.screen.MainScreenViewModel
-import com.beardness.websocketstest.ui.theme.WebSocketsTestTheme
+import com.beardness.websocketstest.ui.theme.AppTheme
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.firstOrNull
@@ -117,14 +118,17 @@ class MainActivity : ComponentActivity() {
 
     private fun compose() {
         setContent {
-            WebSocketsTestTheme {
+            AppTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier
                         .fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
+                    color = AppTheme.colors.background,
                 ) {
-                    MainScreen(viewModel = viewModel)
+                    MainScreen(
+                        viewModel = viewModel,
+                        haptic = { haptic() }
+                    )
                 }
             }
         }
@@ -135,6 +139,8 @@ class MainActivity : ComponentActivity() {
     }
 
     private fun haptic() {
-        vibrator?.vibrate(50)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            vibrator?.vibrate(VibrationEffect.createOneShot(50L, VibrationEffect.DEFAULT_AMPLITUDE))
+        }
     }
 }

@@ -1,33 +1,30 @@
-package com.beardness.websocketstest.ui.widget
+package com.beardness.websocketstest.ui.compose.widget.message
 
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
 import com.beardness.websocketstest.R
 import com.beardness.websocketstest.domain.dto.MessageDto
-import com.beardness.websocketstest.ui.widget.component.MessageComponent
+import com.beardness.websocketstest.ui.compose.component.message.NeuMessageComponent
+import com.beardness.websocketstest.ui.theme.AppTheme
 
 @Composable
-fun MessagesWidget(
+fun NeuMessagesWidget(
     modifier: Modifier,
     message: List<MessageDto>
 ) {
     val youText = stringResource(id = R.string.you)
     val serverText = stringResource(id = R.string.server)
 
-    val clientColor = MaterialTheme.colorScheme.primary
-    val serverColor = MaterialTheme.colorScheme.secondary
+    val serverColor = AppTheme.colors.text
+    val clientColor = serverColor.copy(alpha = .3f)
 
     LazyColumn(
         modifier = modifier
-            .fillMaxWidth()
-            .padding(horizontal = 16.dp),
+            .fillMaxWidth(),
     ) {
         items(message) { element ->
             val status =
@@ -48,7 +45,7 @@ fun MessagesWidget(
 
             val datetime = element.datetime
 
-            MessageComponent(
+            NeuMessageComponent(
                 status = status,
                 statusColor = statusColor,
                 text = text,
