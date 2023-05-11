@@ -12,16 +12,16 @@ Designed with Neumorphism
 
 # Features
 
+- **WebSocket**
+- **Neumorphism**
+
+# Dev Features
+
 - **Kotlin**
 - **Kotlin Coroutines**
 - **Connect/Disconnect WebSocket**
 - **Send message to WebSocket**
 - **DataStore**
-
-# Dev Features
-
-- **WebSocket**
-- **Neumorphism**
 
 # Preview
 
